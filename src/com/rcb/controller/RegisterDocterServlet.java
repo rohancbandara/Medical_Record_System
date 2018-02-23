@@ -1,0 +1,48 @@
+package com.rcb.controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.rcb.model.Docter;
+import com.rcb.model.Special;
+import com.rcb.service.DocterService;
+
+@WebServlet("/registerDocter")
+public class RegisterDocterServlet extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Docter docter = new Docter();
+		Special special = new Special();
+		docter.setD_FName(request.getParameter("txtFname"));
+		docter.setD_LName(request.getParameter("txtLname"));
+		docter.setD_email(request.getParameter("txtEmail"));
+		// docter.setD_special(request.getParameter("special"));
+		special.setSp_name(request.getParameter("special"));
+
+		String action = request.getParameter("btnSubmit");
+		if (action.equals("save")) {
+			DocterService regDocter = new DocterService();
+			Boolean result = regDocter.putDocterData(docter);
+			System.out.println(special.getSp_name());
+			System.out.println(result);
+			if (result) {
+
+				response.sendRedirect("AddDocter.jsp");
+			}
+
+		} else if (action.equals("cancel")) {
+			response.sendRedirect("DashBoard.jsp");
+		}
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	}
+
+}
