@@ -39,7 +39,10 @@ public class RegisterPatientServlet extends HttpServlet {
 		if (action.equals("save")) {
 			PatienfService regPatient = new PatienfService();
 
-			regPatient.putPatientData(patient);
+			if (regPatient.putPatientData(patient)) {
+
+			}
+
 			response.sendRedirect("PatientAdd.jsp");
 
 		}

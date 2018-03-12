@@ -8,45 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
- <%@ page import="java.sql.*" %>
     <%
-            Class.forName ("com.mysql.jdbc.Driver");            
-            Connection  conn=null;  
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/sliate_project","root","kaththa");
-            ListPatient ListPatient=new ListPatient();
-            ListPatient.listAllPatient();
-            
-            %>
- <center>
-        <h1>Books Management</h1>
-        <h2>
-            <a href="/new">Add New Book</a>
-            &nbsp;&nbsp;&nbsp;
-            <a href="/list">List All Books</a>
-             
-        </h2>
-    </center>
-    <div align="center">
-        <table border="1" cellpadding="5">
-            <caption><h2>List of Books</h2></caption>
-            <tr>
-                <th>ID</th>
-                <th>FNAME</th>
-            </tr>
-            
-            <c:forEach var="patient" items="${listPatient}">
-                <tr>
-                    <td><c:out value="${patient.id}" /></td>
-                    <td><c:out value="${patient.fname}" /></td>
-                   
-                    <td>
-                        <a href="/edit?id=<c:out value='${book.id}' />">Edit</a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="/delete?id=<c:out value='${book.id}' />">Delete</a>                     
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
-    </div>
+     Document document=new Document();
+     try{
+   PdfWriter.getInstance(document,new FileOutputStream("reporttest1.pdf"));
+  document.open();  
+     document.add(new Paragraph("this is to test"));
+     }catch(Exception e){}
+ finally{ document.close();}
+    %>
 </body>
 </html>

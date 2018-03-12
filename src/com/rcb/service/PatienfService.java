@@ -19,6 +19,7 @@ public class PatienfService {
 					+ patient.getP_tel() + "'," + "'" + patient.getP_status() + "')";
 			db.putData(patientPutSql);
 			System.out.println("sucessfully patient Added!!!");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Insert Patient quary erro...!!!");

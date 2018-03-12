@@ -13,7 +13,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 public class EmailService {
-	public static boolean sendingEmail(String Email, String Body) {
+	public boolean sendingEmail(String Email, String Body) {
 		String host = "smtp.gmail.com";
 		String from = "test.rohan1993@gmail.com"; // sending this email
 		String pass = "test.rohan"; // email Password
@@ -44,10 +44,14 @@ public class EmailService {
 			return true;
 
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("Error in send mail to " + Email);
+			e.printStackTrace();
 		}
 
 		return false;
 	}
 
+	// public static void main(String args[]) {
+	// sendingEmail("rohancbandara@gmail.com", "testing");
+	// }
 }

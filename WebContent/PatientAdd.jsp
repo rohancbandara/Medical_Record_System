@@ -30,7 +30,7 @@ if(session.getAttribute("username")==null){
          <label >NIC </label>
             <input name="txtNic" type="text" id="txtNic"  placeholder="NIC" /><br>
          <label >Email </label>
-            <input name="txtEmail" type="text" id="txtEmail"  placeholder="Email" /><br>
+            <input name="txtEmail" type="email" id="txtEmail"  placeholder="Email" /><br>
 
 
          <h3>Personal Info</h3>
