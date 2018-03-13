@@ -23,7 +23,7 @@ if(session.getAttribute("username")==null){
 <%int id=0; %>
 <form action="createTimeIntervel" method="get">
 <label>Docter :</label>
-<select>
+<select name="id">
 
 <%
 try{
@@ -32,7 +32,7 @@ try{
 	ResultSet rs= db.getData(sql);
 	while(rs.next()){
 		id=rs.getInt("d_id");
-		%><option>DR.<%=rs.getString("d_fname") %> <%=rs.getString("d_lname") %></option><%
+		%><option value="<%=id %>" >DR.<%=rs.getString("d_fname") %> <%=rs.getString("d_lname") %></option><%
 	}
 
 
@@ -43,7 +43,7 @@ try{
 
 </select></br>
 <label>Date:</label>
-<input type="date" id="txtDate" > </br></br>
+<input type="date" name="txtDate" > </br></br>
 <label><b></>Time Slot:<b></label>
 <select name="txtIntervel">
 	<option>10</option>

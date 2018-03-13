@@ -21,6 +21,7 @@ if(session.getAttribute("username")==null){
 %>
 <h3>Welcome :${username }        <a href="login">logout</a></h3>
 
+
 	<form action="PatientAdd.jsp" method="get">
 		<label>Patient:</label>
 		<input type="text" name="patient" id="patient">

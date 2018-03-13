@@ -16,6 +16,7 @@
 
 
 
+
 	<form action="AddDocter.jsp" method="get">
 		<label>Patient:</label>
 		<input type="text" name="patient" id="patient">

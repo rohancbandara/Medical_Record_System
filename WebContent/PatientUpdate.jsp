@@ -26,6 +26,7 @@ if(session.getAttribute("username")==null){
 <h3>Welcome :${username }        <a href="login">logout</a></h3>
 
 
+
 <form action="patientUpdate" method="get">
 		 <h4>Patient Account</h4>
 		 
