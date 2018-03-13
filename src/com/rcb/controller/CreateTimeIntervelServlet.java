@@ -21,7 +21,12 @@ public class CreateTimeIntervelServlet extends HttpServlet {
 		int interval = Integer.parseInt(request.getParameter("txtIntervel"));
 
 		CreateTimeIntervelService createTimeIntervel = new CreateTimeIntervelService();
-		createTimeIntervel.intervals(begin * 60, end * 60, interval);
+		boolean result = createTimeIntervel.intervals(begin * 60, end * 60, interval);
+		if (result) {
+			System.out.println("sucess");
+		} else {
+			response.sendRedirect("CreateAppointment.jsp");
+		}
 	}
 
 }

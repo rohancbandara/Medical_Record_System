@@ -32,7 +32,7 @@ try{
 	ResultSet rs= db.getData(sql);
 	while(rs.next()){
 		id=rs.getInt("d_id");
-		%><option><%=id %>: DR.<%=rs.getString("d_fname") %> <%=rs.getString("d_lname") %></option><%
+		%><option>DR.<%=rs.getString("d_fname") %> <%=rs.getString("d_lname") %></option><%
 	}
 
 
@@ -122,7 +122,7 @@ try{
 		
 	</tr>
 </table>
-<input type="submit">
+<input type="submit" value="Create Appoinment">
 
 
 
