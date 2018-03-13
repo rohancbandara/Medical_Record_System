@@ -8,14 +8,14 @@ public class Docter {
 	private String d_LName;
 	private Date d_dob;
 	private String d_email;
-	private String d_special;
+	private int d_special;
 	private int is_delete;
 
-	public String getD_special() {
+	public int getD_special() {
 		return d_special;
 	}
 
-	public void setD_special(String d_special) {
+	public void setD_special(int d_special) {
 		this.d_special = d_special;
 	}
 

@@ -21,8 +21,8 @@ public class RegisterDocterServlet extends HttpServlet {
 		docter.setD_FName(request.getParameter("txtFname"));
 		docter.setD_LName(request.getParameter("txtLname"));
 		docter.setD_email(request.getParameter("txtEmail"));
-		// docter.setD_special(request.getParameter("special"));
-		special.setSp_name(request.getParameter("special"));
+		docter.setD_special(Integer.parseInt(request.getParameter("special")));
+		// special.setSp_name(request.getParameter("special"));
 
 		String action = request.getParameter("btnSubmit");
 		if (action.equals("save")) {

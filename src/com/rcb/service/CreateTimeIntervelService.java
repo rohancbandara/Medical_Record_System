@@ -27,8 +27,8 @@ public class CreateTimeIntervelService {
 				try {
 					String intervels = String.format("%02d:%02d", time / 60, time % 60);
 					System.out.println(intervels);
-					String sql = "INSERT INTO tbl_appoinment values('" + tI.getTbl_id() + "','" + intervels + "','" + 0
-							+ "','" + null + "') ";
+					String sql = "INSERT INTO tbl_appoinment(tbl_id,intervels,patient,dsp) values('" + tI.getTbl_id()
+							+ "','" + intervels + "','" + 0 + "','" + null + "') ";
 					db.putData(sql);
 					System.out.println("Sucess create intervels");
 				} catch (Exception e) {

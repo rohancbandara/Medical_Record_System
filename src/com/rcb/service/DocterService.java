@@ -16,7 +16,7 @@ public class DocterService {
 			String insertDocterSQL = "INSERT INTO tbl_docters(tbl_docters.d_fname,\r\n" + "tbl_docters.d_lname,\r\n"
 					+ "tbl_docters.d_dob,\r\n" + "tbl_docters.d_email,\r\n" + "tbl_docters.d_special)VALUES(" + "'"
 					+ docter.getD_FName() + "'," + "'" + docter.getD_LName() + "'," + "'" + docter.getD_dob() + "',"
-					+ "'" + docter.getD_email() + "'," + "'" + getSpecialId(special) + "') ";
+					+ "'" + docter.getD_email() + "'," + "'" + docter.getD_special() + "') ";
 
 			db.putData(insertDocterSQL);
 

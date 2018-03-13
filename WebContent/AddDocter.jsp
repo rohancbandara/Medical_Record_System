@@ -32,7 +32,7 @@ if(session.getAttribute("username")==null){
             <input name="txtLname" type="text" id="txtLname"  placeholder="Last Name" /><br>
          <label >Special </label>
             <select name="special" id="special" >
-				<option value="0">-Select Special-</option>
+				
 				
 				<%
 				DbConnection db=new DbConnection();
@@ -41,9 +41,9 @@ if(session.getAttribute("username")==null){
 					ResultSet rs=db.getData(sql);
 					while(rs.next()){
 						String special=rs.getString("sp_name");
-						int v=1;
+						int v=rs.getInt("sp_id");
 						%>
-						<option value="<%=v%><%=v++%>>"><%=special %></option>
+						<option value="<%=v%>"><%=special %></option>
 						<%
 					}
 				}
