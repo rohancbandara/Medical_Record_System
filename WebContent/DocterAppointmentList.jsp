@@ -44,8 +44,8 @@ if(session.getAttribute("username")==null){
 			int toTime=rs.getInt("tbl_tables.to")/60;
 			
 			%>
-			<p>Dr.<%=dFullName.toUpperCase()%> Special in :<%=special %></p>
-			<p></>Comming on : <b><%=date %></b> From <b><%=fromTime %>:00 HH</b> To <b><%=toTime %>:00 HH</b></p>
+			<p><b>Dr.<%=dFullName.toUpperCase()%></b> Special in :<%=special %></p>
+			<p>Comming on : <b><%=date %></b> From <b><%=fromTime %>:00 HH</b> To <b><%=toTime %>:00 HH</b></p>
 			<table border="0">
 				<tr>
 					<th>Time</th>
@@ -65,7 +65,7 @@ if(session.getAttribute("username")==null){
 					<tr>
 						<td><%=interval %></td>
 						<td><%=patient %></td>
-						<td><%=dsp %></td>
+						<td><a href="/Medicle_Record_System/docterEdit?id=<%=tbl_id %>"><%=dsp %></a></td>
 					</tr>
 					<%
 					

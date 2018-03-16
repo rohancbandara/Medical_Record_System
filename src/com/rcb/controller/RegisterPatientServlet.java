@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.rcb.model.Patient;
+import com.rcb.service.EmailService;
 import com.rcb.service.PatienfService;
 
 @WebServlet("/RegisterPatient")
@@ -19,6 +20,8 @@ public class RegisterPatientServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		Patient patient = new Patient();
+		EmailService sendEmail = new EmailService();
+
 		patient.setP_fname(request.getParameter("txtFname"));
 		patient.setP_lname(request.getParameter("txtLname"));
 		patient.setP_nic(request.getParameter("txtNic"));
@@ -29,6 +32,7 @@ public class RegisterPatientServlet extends HttpServlet {
 		patient.setP_blood(request.getParameter("bloodGroup"));
 		patient.setP_marital(request.getParameter("status"));
 		patient.setP_haddress(request.getParameter("homeAdd"));
+
 		// patient.setP_caddress(request.getParameter("currentAdd"));
 		// patient.setP_country(request.getParameter("country"));
 		// patient.setP_state(request.getParameter("txtState"));
@@ -38,12 +42,21 @@ public class RegisterPatientServlet extends HttpServlet {
 		String action = request.getParameter("btnSubmit");
 		if (action.equals("save")) {
 			PatienfService regPatient = new PatienfService();
+			// sendEmail.SendingEmail(patient);
+			try {
+				boolean result1 = regPatient.putPatientData(patient);
+				// boolean result2 =
+				if (result1) {
+					System.out.println("sucess add ");
+					response.sendRedirect("PatientList.jsp");
+				}
 
-			if (regPatient.putPatientData(patient)) {
+				response.sendRedirect("PatientAdd.jsp");
 
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("error in ");
 			}
-
-			response.sendRedirect("PatientAdd.jsp");
 
 		}
 

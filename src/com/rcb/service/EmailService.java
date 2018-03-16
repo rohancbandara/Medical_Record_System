@@ -3,6 +3,7 @@ package com.rcb.service;
 import java.util.Properties;
 
 import javax.mail.Message;
+import javax.mail.MessagingException;
 import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -12,46 +13,50 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+import com.rcb.model.Patient;
+
+//String from = "rcb.medical.record.system@gmail.com"; // Your mail id
+//String pass = "rcb@1234"; // Your Password
+
 public class EmailService {
-	public boolean sendingEmail(String Email, String Body) {
-		String host = "smtp.gmail.com";
-		String from = "test.rohan1993@gmail.com"; // sending this email
-		String pass = "test.rohan"; // email Password
-		Properties props = System.getProperties();
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.host", host);
-		props.put("mail.smtp.user", from);
-		props.put("mail.smtp.password", pass);
+
+	public boolean SendingEmail(Patient patient) {
+
+		final String username = "rcb.medical.record.system@gmail.com";
+		final String password = "rcb@1234";
+
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", true);
+		props.put("mail.smtp.starttls.enable", true);
+		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.port", "587");
-		props.put("mail.smtp.auth", "true");
 
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(from, pass);
+				return new PasswordAuthentication(username, password);
 			}
 		});
-		try {
-			Message message = new MimeMessage(session);
 
-			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(Email));
-			message.setSubject("Sequrity Alert !!");
-			message.setText(Body);
+		try {
+
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress("rcb.medical.record.system@gmail.com"));// ur email
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(patient.getP_email()));// u will send
+																											// to
+			message.setSubject("Use this code as Sequrity code ");
+			message.setText("code 000000000000000000 ");
 			MimeBodyPart messageBodyPart = new MimeBodyPart();
 			Multipart multipart = new MimeMultipart();
+
 			System.out.println("sending");
 			Transport.send(message);
-			System.out.println("send Sucessfully");
+			System.out.println("Done");
 			return true;
 
-		} catch (Exception e) {
-			System.out.println("Error in send mail to " + Email);
+		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
-
 		return false;
 	}
 
-	// public static void main(String args[]) {
-	// sendingEmail("rohancbandara@gmail.com", "testing");
-	// }
 }

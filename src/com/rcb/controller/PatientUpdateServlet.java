@@ -22,6 +22,7 @@ public class PatientUpdateServlet extends HttpServlet {
 			throws ServletException, IOException {
 		PatienfService patientService = new PatienfService();
 		Patient patient = new Patient();
+
 		patient.setP_id(Integer.parseInt(request.getParameter("txtPid")));
 		patient.setP_fname(request.getParameter("txtFname"));
 		patient.setP_lname(request.getParameter("txtLname"));
@@ -37,8 +38,8 @@ public class PatientUpdateServlet extends HttpServlet {
 
 		System.out.println(patient.getP_id());
 
-		Boolean result = patientService.updatePatient(patient);
-		System.out.println(request);
+		boolean result = patientService.updatePatient(patient);
+
 		if (result) {
 			response.sendRedirect("PatientList.jsp");
 		}
